@@ -10,6 +10,16 @@ import { navItems } from "@/constants";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  // Smooth scroll helper
+  const handleScroll = (href: string) => {
+    const id = href.replace("#", "");
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    setOpen(false); // close mobile menu if open
+  };
+
   return (
     <>
       <motion.nav
@@ -18,7 +28,7 @@ export default function Navbar() {
         transition={{ duration: 0.6 }}
         className="fixed top-0 left-0 w-full z-50"
       >
-        <div className="mx-auto max-w-screen-xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <div className="mt-4 flex items-center justify-between rounded-lg border border-white/20 bg-white/10 backdrop-blur-md shadow-xl px-6 py-4">
             {/* Logo */}
             <div className="flex items-center gap-3 text-white font-semibold text-xl">
@@ -26,26 +36,30 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Nav */}
-            <ul className="hidden lg:flex items-center gap-10 text-white text-3xl font-semibold tracking-wide">
+            <ul className="hidden lg:flex items-center gap-10 text-white text-2xl font-semibold tracking-wide">
               {navItems.map((item) => (
                 <motion.li
                   key={item.label}
-                  whileHover={{ y: -3 }}
+                  whileHover={{ y: -1 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <a
-                    href={item.href}
-                    className="text-lg opacity-80 hover:opacity-100 transition"
+                  <button
+                    onClick={() => handleScroll(item.href)}
+                    className="text-lg opacity-80 hover:opacity-100 transition cursor-pointer"
                   >
                     {item.label}
-                  </a>
+                  </button>
                 </motion.li>
               ))}
             </ul>
 
             {/* Desktop Button */}
             <div className="hidden lg:block">
-              <Button className="bg-white hover:bg-gray-100 text-gray-800 text-lg font-semibold tracking-wide">
+              <Button
+                variant="ghost"
+                onClick={() => handleScroll("#contact")}
+                className="text-gray-100 text-lg font-semibold tracking-wide cursor-pointer px-8 py-4"
+              >
                 Contact
               </Button>
             </div>
@@ -53,7 +67,7 @@ export default function Navbar() {
             {/* Hamburger */}
             <button
               onClick={() => setOpen(!open)}
-              className="lg:hidden text-white"
+              className="lg:hidden text-white cursor-pointer"
             >
               <motion.div
                 animate={{ rotate: open ? 180 : 0 }}
@@ -66,7 +80,15 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      <MobileNav open={open} setOpen={setOpen} navItems={navItems} />
+      {/* Mobile Navigation */}
+      <MobileNav
+        open={open}
+        setOpen={setOpen}
+        navItems={navItems.map((item) => ({
+          ...item,
+          onClick: () => handleScroll(item.href), // pass scroll to mobile nav
+        }))}
+      />
     </>
   );
 }

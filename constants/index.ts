@@ -46,12 +46,12 @@ export const experiences: Experience[] = [
 ];
 
 export const navItems = [
-  { label: "About", href: "#" },
-  { label: "Experience", href: "#" },
-  { label: "Stack", href: "#" },
-  { label: "Projects", href: "#" },
-  { label: "Blog", href: "#" },
-  { label: "Playground", href: "#" },
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Stack", href: "#stack" },
+  { label: "Projects", href: "#projects" },
+  { label: "Blog", href: "#blog" },
+  { label: "Playground", href: "#playground" },
 ];
 
 export interface Game {

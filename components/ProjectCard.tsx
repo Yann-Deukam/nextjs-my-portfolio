@@ -44,7 +44,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       <div
         className="
           absolute inset-0
-          bg-gradient-to-t
+          bg-linear-to-t
           from-black/95 via-black/80 to-black/40
           opacity-0
           group-hover:opacity-100

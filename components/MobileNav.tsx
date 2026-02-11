@@ -78,8 +78,9 @@ export default function MobileNav({ open, setOpen, navItems }: Props) {
             <motion.div variants={itemVariants}>
               <Button
                 size="lg"
-                className="mt-6 bg-white hover:bg-gray-100 text-gray-800 text-lg font-semibold tracking-wide"
+                className="mt-6 bg-white hover:bg-gray-100 text-gray-100 text-3xl font-semibold tracking-wide px-16 py-8 cursor-pointer"
                 onClick={() => setOpen(false)}
+                variant="outline"
               >
                 Contact
               </Button>

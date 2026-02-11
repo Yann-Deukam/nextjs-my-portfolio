@@ -3,11 +3,27 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import Navbar from "@/components/Navbar";
+import localFont from "next/font/local";
 
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
+});
+
+const satoshi = localFont({
+  src: [
+    {
+      path: "../fonts/Satoshi-Variable.woff2",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Satoshi-VariableItalic.woff2",
+      style: "italic",
+    },
+  ],
+  variable: "--font-satoshi",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -22,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${roboto.variable} antialiased`}>
+      <body className={`${satoshi.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

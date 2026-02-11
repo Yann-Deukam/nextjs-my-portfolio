@@ -8,34 +8,31 @@ import gsap from "gsap";
 import GradientText from "./GradientText";
 
 export default function Hero() {
-  const wormRef = useRef<SVGRectElement>(null);
+  const wormRef = useRef<SVGCircleElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!wormRef.current || !containerRef.current) return;
 
     const worm = wormRef.current;
-    const container = containerRef.current;
 
-    // Create GSAP timeline for the worm orbit
+    // Create a timeline that moves the dash offset continuously
     const tl = gsap.timeline({ paused: true, repeat: -1 });
-
     tl.to(worm, {
-      strokeDashoffset: -100,
-      duration: 2.5,
+      strokeDashoffset: -300, // numeric
+      duration: 2,
       ease: "linear",
     });
 
-    // Play the timeline only on hover
     const enter = () => tl.play();
     const leave = () => tl.pause();
 
-    container.addEventListener("mouseenter", enter);
-    container.addEventListener("mouseleave", leave);
+    containerRef.current.addEventListener("mouseenter", enter);
+    containerRef.current.addEventListener("mouseleave", leave);
 
     return () => {
-      container.removeEventListener("mouseenter", enter);
-      container.removeEventListener("mouseleave", leave);
+      containerRef.current?.removeEventListener("mouseenter", enter);
+      containerRef.current?.removeEventListener("mouseleave", leave);
       tl.kill();
     };
   }, []);
@@ -44,10 +41,10 @@ export default function Hero() {
     <section className="relative overflow-hidden bg-background">
       {/* Background Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 h-[500px] w-[800px] bg-primary/20 blur-[120px] rounded-full" />
+        <div className="absolute -top-50 left-1/2 -translate-x-1/2 h-125 w-200 bg-primary/20 blur-[120px] rounded-full" />
       </div>
 
-      <div className=" grid md:grid-cols-2 gap-16 items-center">
+      <div className="grid md:grid-cols-2 gap-16 items-center px-4 md:px-0">
         {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -63,7 +60,7 @@ export default function Hero() {
           >
             <Sparkles className="w-4 h-4 text-primary" />
             <GradientText
-              colors={["#5227FF", "#FF9FFC", "#B19EEF"]}
+              colors={["#FFFFFF99", "#FFFFFFCC", "#FFFFFF99"]}
               animationSpeed={8}
               showBorder={false}
               className="custom-class"
@@ -76,28 +73,29 @@ export default function Hero() {
             Navigating the{" "}
             <span className="text-primary">digital landscape</span> for success
           </h1>
+
           <p className="text-muted-foreground text-lg max-w-xl mx-auto md:mx-0">
             I’m a software engineer and AI enthusiast, creating innovative
             projects that showcase my skills, creativity, and problem-solving
             abilities.
           </p>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <a href="/signup">
-              <button className="relative inline-block p-px font-semibold leading-6 text-white no-underline bg-gray-800 shadow-2xl cursor-pointer group rounded-xl shadow-zinc-900">
-                <span className="absolute inset-0 overflow-hidden rounded-xl">
-                  <span className="absolute inset-0 rounded-xl bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
-                </span>
-                <div className="relative z-10 flex items-center px-6 py-3 space-x-2 rounded-xl bg-gray-950/50 ring-1 ring-white/10 ">
-                  <span>Lets get in touch</span>
+            <a href="#contact">
+              <button className="relative inline-block p-px font-semibold leading-6 text-white no-underline bg-gray-800 shadow-lg cursor-pointer group rounded-xl overflow-hidden">
+                {/* Radial gradient hover */}
+                <span className="absolute inset-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100 bg-[radial-gradient(75%_100%_at_50%_0%,rgba(255,255,255,0.6)_0%,rgba(255,255,255,0)_75%)] rounded-xl"></span>
+
+                <div className="relative z-10 flex items-center px-6 py-3 space-x-2 rounded-xl bg-gray-950/50 ring-1 ring-white/10">
+                  <span>Let's get in touch</span>
                   <ArrowRight className="w-5 h-5" />
                 </div>
-                <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-gray-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40"></span>
               </button>
             </a>
           </div>
         </motion.div>
 
-        {/* RIGHT IMAGE SQUIRCLE */}
+        {/* RIGHT IMAGE + CIRCULAR HALO */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -108,23 +106,22 @@ export default function Hero() {
             ref={containerRef}
             className="relative group w-[320px] md:w-[400px] aspect-square"
           >
-            {/* Orbiting Worm */}
+            {/* Circular snake halo */}
             <svg
-              className="absolute inset-0 w-full h-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              className="absolute inset-0 w-full h-full pointer-events-none"
               viewBox="0 0 100 100"
             >
-              <rect
+              <circle
                 ref={wormRef}
-                x="3"
-                y="3"
-                width="94"
-                height="94"
-                rx="28"
-                ry="28"
+                cx="50"
+                cy="50"
+                r="48"
                 fill="none"
-                stroke="hsl(275,80%,60%)"
-                strokeWidth="1"
-                strokeDasharray="15 85"
+                stroke="white"
+                strokeWidth="2"
+                strokeDasharray={10 + " " + 290} // numeric
+                strokeLinecap="round"
+                opacity={1} // visible
               />
             </svg>
 

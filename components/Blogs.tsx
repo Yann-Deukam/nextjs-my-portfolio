@@ -33,7 +33,7 @@ export default function BlogSection() {
             className="group space-y-6"
           >
             {/* Image */}
-            <div className="relative h-[400px] w-full overflow-hidden rounded-2xl">
+            <div className="relative h-100 w-full overflow-hidden rounded-2xl">
               <Image
                 src={post.image}
                 alt={post.title}
