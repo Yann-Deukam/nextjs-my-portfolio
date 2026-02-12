@@ -6,7 +6,7 @@ import { Mail, Globe } from "lucide-react";
 
 export default function ExperienceSection() {
   return (
-    <section className="max-w-7xl mx-auto py-24 space-y-16">
+    <section className="max-w-7xl mx-auto pb-24 pt-8 space-y-16">
       {experiences.map((exp, index) => (
         <motion.div
           key={exp.company}

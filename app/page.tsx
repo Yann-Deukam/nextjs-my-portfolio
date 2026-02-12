@@ -3,6 +3,7 @@ import BlogSection from "@/components/Blogs";
 import ContactSection from "@/components/Contact";
 import ExperienceSection from "@/components/Experience";
 import FeaturedProjects from "@/components/FeaturedProjects";
+import Heading from "@/components/Heading";
 import Hero from "@/components/Hero";
 import MyStack from "@/components/MyStack";
 import PlaygroundHero from "@/components/Playground";
@@ -12,34 +13,33 @@ export default function Home() {
     <div>
       <div className="pt-28">
         <Hero />
-        <section id="about" className="scroll-mt-30">
-          <h1 className="text-6xl mt-40 font-bold">More About me</h1>
+        <Heading id="about" title="More About me" legend="About">
           <AboutSection />
-        </section>
-        <section id="experience" className="scroll-mt-30">
-          <h1 className="text-6xl mt-40 font-bold">Work Experience</h1>
+        </Heading>
+
+        <Heading id="experience" title="Work Experience" legend="Experience">
           <ExperienceSection />
-        </section>
-        <section id="stack" className="scroll-mt-30">
-          <h1 className="text-6xl mt-40 font-bold">My tech stack</h1>
+        </Heading>
+
+        <Heading id="stack" title="My tech stack" legend="Stack">
           <MyStack />
-        </section>
-        <section id="projects" className="scroll-mt-30">
-          <h1 className="text-6xl mt-40 font-bold">Selected Projects</h1>
+        </Heading>
+
+        <Heading id="projects" title="Selected Projects" legend="Projects">
           <FeaturedProjects />
-        </section>
-        <section id="playground" className="scroll-mt-30">
-          <h1 className="text-6xl mt-40 font-bold">Digital Playground</h1>
+        </Heading>
+
+        <Heading id="playground" title="Digital Playground" legend="Playground">
           <PlaygroundHero />
-        </section>
-        <section id="blog" className="scroll-mt-30">
-          <h1 className="text-6xl mt-40 font-bold">Latest Blogs</h1>
+        </Heading>
+
+        <Heading id="blog" title="Latest Blogs" legend="Blog">
           <BlogSection />
-        </section>
-        <section id="contact" className="scroll-mt-30">
-          <h1 className="text-6xl mt-40 font-bold">Contact</h1>
+        </Heading>
+
+        <Heading id="contact" title="Contact" legend="Contact">
           <ContactSection />
-        </section>
+        </Heading>
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ export default function ContactSection() {
   const whatsappLink = `https://wa.me/237YOURNUMBER`;
 
   return (
-    <section className="py-24">
+    <section className="pb-24 pt-4">
       <div className="grid md:grid-cols-12 gap-12">
         {/* LEFT - Contact Methods */}
         <div className="md:col-span-4 space-y-6">
@@ -39,10 +39,9 @@ export default function ContactSection() {
           {/* Email Card */}
           <a
             href={mailtoLink}
-            className="block p-6 bg-white/5 backdrop-blur border border-white/10 rounded-2xl hover:bg-white/10 transition"
+            className="block p-6 bg-white/5 backdrop-blur border border-white/10 rounded-md hover:bg-white/10 transition"
           >
             <div className="flex items-center gap-4">
-              <Mail className="w-5 h-5" />
               <div>
                 <p className="font-medium">Email</p>
                 <p className="text-sm text-muted-foreground">your@email.com</p>
@@ -54,10 +53,9 @@ export default function ContactSection() {
           <a
             href={whatsappLink}
             target="_blank"
-            className="block p-6 bg-white/5 backdrop-blur border border-white/10 rounded-2xl hover:bg-white/10 transition"
+            className="block p-6 bg-white/5 backdrop-blur border border-white/10 rounded-md hover:bg-white/10 transition"
           >
             <div className="flex items-center gap-4">
-              <MessageCircle className="w-5 h-5" />
               <div>
                 <p className="font-medium">WhatsApp</p>
                 <p className="text-sm text-muted-foreground">
@@ -70,7 +68,7 @@ export default function ContactSection() {
 
         {/* RIGHT - Contact Form */}
         <div className="md:col-span-8">
-          <div className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-10">
+          <div className="bg-white/5 backdrop-blur border border-white/10 rounded-md p-10">
             <form onSubmit={handleSubmit} className="space-y-6">
               <input
                 type="text"
@@ -79,7 +77,7 @@ export default function ContactSection() {
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="w-full px-6 py-3 rounded-xl bg-white/10 border border-white/20 focus:outline-none"
+                className="w-full px-6 py-3 rounded-md focus:bg-white/10 focus:transition-all border border-white/20 focus:outline-none"
               />
 
               <input
@@ -89,7 +87,7 @@ export default function ContactSection() {
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="w-full px-6 py-3 rounded-xl bg-white/10 border border-white/20 focus:outline-none"
+                className="w-full px-6 py-3 rounded-md focus:bg-white/10 border focus:transition-all border-white/20 focus:outline-none"
               />
 
               <textarea
@@ -99,7 +97,7 @@ export default function ContactSection() {
                 value={form.message}
                 onChange={handleChange}
                 required
-                className="w-full px-6 py-3 rounded-xl bg-white/10 border border-white/20 focus:outline-none resize-none"
+                className="w-full px-6 py-3 rounded-md focus:bg-white/10 focus:transition-all border border-white/20 focus:outline-none resize-none"
               />
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">

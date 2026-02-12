@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function PlaygroundHero() {
   return (
-    <section className="w-full py-24">
+    <section className="w-full pb-24 pt-8">
       <div
         className="
           max-w-6xl mx-auto

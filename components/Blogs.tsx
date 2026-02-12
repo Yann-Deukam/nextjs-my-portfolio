@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function BlogSection() {
   return (
-    <section className=" py-24 space-y-16">
+    <section className="pb-24 pt-8 space-y-16">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div className="max-w-2xl">

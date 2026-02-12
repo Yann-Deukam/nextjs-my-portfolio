@@ -65,7 +65,7 @@ export default function FeaturedProjects() {
       style={{ height: sectionHeight }}
     >
       {/* Header */}
-      <div className=" pt-24 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div className="py-8 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div className="max-w-2xl space-y-3">
           <p className="text-muted-foreground text-lg">
             A curated selection of projects combining performance, architecture,

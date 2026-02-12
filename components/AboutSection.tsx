@@ -6,7 +6,7 @@ import { infoCards } from "@/constants";
 
 export default function AboutSection() {
   return (
-    <section className="py-24 grid md:grid-cols-12 gap-12">
+    <section className="pb-24 pt-8 grid md:grid-cols-12 gap-12">
       {/* LEFT: Info Cards */}
       <div className="md:col-span-4 flex flex-col gap-6">
         {infoCards.map((card, idx) => (

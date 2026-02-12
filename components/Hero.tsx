@@ -12,20 +12,29 @@ export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!wormRef.current || !containerRef.current) return;
+    if (!containerRef.current) return;
 
-    const worm = wormRef.current;
+    const halo = containerRef.current.querySelector("#shapeHalo");
 
-    // Create a timeline that moves the dash offset continuously
-    const tl = gsap.timeline({ paused: true, repeat: -1 });
-    tl.to(worm, {
-      strokeDashoffset: -300, // numeric
-      duration: 2,
+    if (!halo) return;
+
+    const tl = gsap.to(halo, {
+      rotate: 360,
+      duration: 6,
       ease: "linear",
+      repeat: -1,
+      paused: true,
     });
 
-    const enter = () => tl.play();
-    const leave = () => tl.pause();
+    const enter = () => {
+      halo.classList.add("border");
+      tl.play();
+    };
+
+    const leave = () => {
+      tl.pause();
+      gsap.set(halo, { rotate: 0 });
+    };
 
     containerRef.current.addEventListener("mouseenter", enter);
     containerRef.current.addEventListener("mouseleave", leave);
@@ -75,9 +84,8 @@ export default function Hero() {
           </h1>
 
           <p className="text-muted-foreground text-lg max-w-xl mx-auto md:mx-0">
-            I’m a software engineer and AI enthusiast, creating innovative
-            projects that showcase my skills, creativity, and problem-solving
-            abilities.
+            Software engineer based in Cameroon with 3+ years of experience
+            building innovative, problem-solving solutions.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -96,47 +104,42 @@ export default function Hero() {
         </motion.div>
 
         {/* RIGHT IMAGE + CIRCULAR HALO */}
+        {/* RIGHT IMAGE + HALO */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           className="relative flex justify-center"
         >
-          <div
-            ref={containerRef}
-            className="relative group w-[320px] md:w-[400px] aspect-square"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative flex justify-center"
           >
-            {/* Circular snake halo */}
-            <svg
-              className="absolute inset-0 w-full h-full pointer-events-none"
-              viewBox="0 0 100 100"
-            >
-              <circle
-                ref={wormRef}
-                cx="50"
-                cy="50"
-                r="48"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-                strokeDasharray={10 + " " + 290} // numeric
-                strokeLinecap="round"
-                opacity={1} // visible
-              />
-            </svg>
-
-            {/* Image */}
             <div
-              className="w-full h-full overflow-hidden"
-              style={{ borderRadius: "28%" }}
+              ref={containerRef}
+              className="relative group w-[320px] md:w-100 aspect-square"
             >
-              <img
-                src="/pp.jpg"
-                alt="Profile"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+              {/* SHAPE STROKE HALO */}
+              <div
+                className="absolute inset-0 rounded-[28%] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                id="shapeHalo"
               />
+
+              {/* IMAGE */}
+              <div
+                className="relative w-full h-full overflow-hidden"
+                style={{ borderRadius: "28%" }}
+              >
+                <img
+                  src="/profile.png"
+                  alt="Profile"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
