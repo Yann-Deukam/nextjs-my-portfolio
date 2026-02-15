@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import Navbar from "@/components/Navbar";
 import localFont from "next/font/local";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -45,10 +46,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
-            {children}
-          </main>
+          <TooltipProvider>
+            <Navbar />
+            <main className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
+              {children}
+            </main>
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -3,6 +3,7 @@
 import React from "react";
 import { Play } from "lucide-react"; // using lucide-react for the play icon
 import { games } from "@/constants";
+import Link from "next/link";
 
 export default function GameGrid() {
   return (
@@ -14,8 +15,9 @@ export default function GameGrid() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {games.map((game) => (
-            <div
-              key={game.name}
+            <Link
+              href={`/playground/${game.slug}`}
+              key={game.slug}
               className="relative overflow-hidden rounded-xl group cursor-pointer w-full h-56 md:h-48 lg:h-56"
             >
               {/* Game Image */}
@@ -26,7 +28,7 @@ export default function GameGrid() {
               />
 
               {/* Dark Gradient Overlay with Text and Play Button */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-3 flex justify-between items-center">
+              <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/90 to-transparent p-3 flex justify-between items-center">
                 <p className="text-white font-semibold text-lg">{game.name}</p>
 
                 {/* Play button appears only on hover */}
@@ -34,7 +36,7 @@ export default function GameGrid() {
                   <Play className="w-8 h-8 text-white" fill="white" />
                 </button>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

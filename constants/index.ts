@@ -57,17 +57,22 @@ export const navItems = [
 export interface Game {
   name: string;
   image: string;
+  slug: string;
 }
 
 export const games: Game[] = [
-  { name: "Chess", image: "/games/chess.jpg" },
-  { name: "Crossword Puzzles", image: "/games/crossword.jpg" },
-  { name: "Damier", image: "/games/dames.jpg" },
-  { name: "Memory Game", image: "/games/memory.jpg" },
-  { name: "Quizz Game", image: "/games/quizz.jpg" },
-  { name: "Sudoku", image: "/games/sudoku.jpg" },
-  { name: "Tic Tac Toe", image: "/games/tic-tac-toe.jpg" },
-  { name: "Wordle", image: "/games/wordle.jpg" },
+  { name: "Chess", image: "/games/chess.jpg", slug: "chess" },
+  {
+    name: "Crossword Puzzles",
+    image: "/games/crossword.jpg",
+    slug: "crossword",
+  },
+  { name: "Damier", image: "/games/dames.jpg", slug: "damier" },
+  { name: "Memory Game", image: "/games/memory.jpg", slug: "memory" },
+  { name: "Quizz Game", image: "/games/quizz.jpg", slug: "quizz" },
+  { name: "Sudoku", image: "/games/sudoku.jpg", slug: "sudoku" },
+  { name: "Tic Tac Toe", image: "/games/tic-tac-toe.jpg", slug: "tic-tac-toe" },
+  { name: "Wordle", image: "/games/wordle.jpg", slug: "wordle" },
 ];
 
 export interface InfoCard {
