@@ -6,18 +6,24 @@ import { TextAlignEnd, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MobileNav from "./MobileNav";
 import { navItems } from "@/constants";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  // Smooth scroll helper
+  const router = useRouter();
+
   const handleScroll = (href: string) => {
     const id = href.replace("#", "");
     const element = document.getElementById(id);
+
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+      setOpen(false);
+    } else {
+      // If we're not on homepage, go there first
+      router.push(`/?scrollTo=${id}`);
     }
-    setOpen(false); // close mobile menu if open
   };
 
   return (

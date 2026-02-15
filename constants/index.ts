@@ -171,6 +171,7 @@ export const projects: Project[] = [
   },
 ];
 
+// constants/blogs.ts
 export interface BlogPost {
   id: number;
   title: string;
@@ -178,6 +179,7 @@ export interface BlogPost {
   date: string;
   author: string;
   image: string;
+  topics: string[]; // New field for tags
 }
 
 export const blogPosts: BlogPost[] = [
@@ -189,6 +191,7 @@ export const blogPosts: BlogPost[] = [
     date: "January 12, 2026",
     author: "Yann Deukam",
     image: "/blogs/blogs.jpg",
+    topics: ["Coding", "Education"],
   },
   {
     id: 2,
@@ -198,6 +201,7 @@ export const blogPosts: BlogPost[] = [
     date: "December 28, 2025",
     author: "Yann Deukam",
     image: "/blogs/blogs.jpg",
+    topics: ["Design", "Performance"],
   },
   {
     id: 3,
@@ -207,6 +211,7 @@ export const blogPosts: BlogPost[] = [
     date: "November 3, 2025",
     author: "Yann Deukam",
     image: "/blogs/blogs.jpg",
+    topics: ["Coding", "Productivity"],
   },
   {
     id: 4,
@@ -216,6 +221,7 @@ export const blogPosts: BlogPost[] = [
     date: "October 14, 2025",
     author: "Yann Deukam",
     image: "/blogs/blogs.jpg",
+    topics: ["UX", "Design"],
   },
 ];
 
