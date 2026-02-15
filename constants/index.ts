@@ -58,21 +58,58 @@ export interface Game {
   name: string;
   image: string;
   slug: string;
+  status: "playable" | "in-development";
 }
 
 export const games: Game[] = [
-  { name: "Chess", image: "/games/chess.jpg", slug: "chess" },
+  {
+    name: "Tic Tac Toe",
+    image: "/games/tic-tac-toe.jpg",
+    slug: "tic-tac-toe",
+    status: "playable",
+  },
+  {
+    name: "Wordle",
+    image: "/games/wordle.jpg",
+    slug: "wordle",
+    status: "playable",
+  },
+  {
+    name: "Chess",
+    image: "/games/chess.jpg",
+    slug: "chess",
+    status: "in-development",
+  },
   {
     name: "Crossword Puzzles",
     image: "/games/crossword.jpg",
     slug: "crossword",
+    status: "in-development",
   },
-  { name: "Damier", image: "/games/dames.jpg", slug: "damier" },
-  { name: "Memory Game", image: "/games/memory.jpg", slug: "memory" },
-  { name: "Quizz Game", image: "/games/quizz.jpg", slug: "quizz" },
-  { name: "Sudoku", image: "/games/sudoku.jpg", slug: "sudoku" },
-  { name: "Tic Tac Toe", image: "/games/tic-tac-toe.jpg", slug: "tic-tac-toe" },
-  { name: "Wordle", image: "/games/wordle.jpg", slug: "wordle" },
+  {
+    name: "Damier",
+    image: "/games/dames.jpg",
+    slug: "damier",
+    status: "in-development",
+  },
+  {
+    name: "Memory Game",
+    image: "/games/memory.jpg",
+    slug: "memory",
+    status: "in-development",
+  },
+  {
+    name: "Quizz Game",
+    image: "/games/quizz.jpg",
+    slug: "quizz",
+    status: "in-development",
+  },
+  {
+    name: "Sudoku",
+    image: "/games/sudoku.jpg",
+    slug: "sudoku",
+    status: "in-development",
+  },
 ];
 
 export interface InfoCard {
@@ -180,4 +217,29 @@ export const blogPosts: BlogPost[] = [
     author: "Yann Deukam",
     image: "/blogs/blogs.jpg",
   },
+];
+
+// constants/index.ts
+
+export const WORDS: string[] = [
+  "REACT",
+  "STACK",
+  "GAMES",
+  "BUILD",
+  "CLEAN",
+  "LOGIC",
+  "CODES",
+  "VITES",
+  "ROUTE",
+  "STATE",
+  "STORE",
+  "FETCH",
+  "ARRAY",
+  "DEBUG",
+  "CLASS",
+  "FRAME",
+  "STYLE",
+  "INPUT",
+  "TOKEN",
+  "MODEL",
 ];

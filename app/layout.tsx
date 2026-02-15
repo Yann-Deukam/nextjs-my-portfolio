@@ -49,7 +49,8 @@ export default function RootLayout({
           <TooltipProvider>
             <Navbar />
             <main className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
-              {children}
+              {" "}
+              {children}{" "}
             </main>
           </TooltipProvider>
         </ThemeProvider>
