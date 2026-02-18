@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function GameGrid() {
   return (
-    <div className="bg-background py-12 mt-36">
+    <div className="bg-background py-12 mt-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">
           Take a break and play some games! 🎮

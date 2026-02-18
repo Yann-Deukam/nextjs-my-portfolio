@@ -75,6 +75,18 @@ export const games: Game[] = [
     status: "playable",
   },
   {
+    name: "Memory Game",
+    image: "/games/memory.jpg",
+    slug: "memory",
+    status: "playable",
+  },
+  {
+    name: "Quizz Game",
+    image: "/games/quizz.jpg",
+    slug: "quizz",
+    status: "playable",
+  },
+  {
     name: "Chess",
     image: "/games/chess.jpg",
     slug: "chess",
@@ -90,18 +102,6 @@ export const games: Game[] = [
     name: "Damier",
     image: "/games/dames.jpg",
     slug: "damier",
-    status: "in-development",
-  },
-  {
-    name: "Memory Game",
-    image: "/games/memory.jpg",
-    slug: "memory",
-    status: "in-development",
-  },
-  {
-    name: "Quizz Game",
-    image: "/games/quizz.jpg",
-    slug: "quizz",
     status: "in-development",
   },
   {
@@ -249,3 +249,12 @@ export const WORDS: string[] = [
   "TOKEN",
   "MODEL",
 ];
+
+export type CardType = {
+  id: number;
+  value: string;
+  isFlipped: boolean;
+  isMatched: boolean;
+};
+
+export const ICONS = ["🚀", "🔥", "💎", "🎮", "⚡", "🧠", "🌙", "🎯"];
